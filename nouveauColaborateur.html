@@ -119,18 +119,17 @@
           function formIsValid(){
 
             var url=document.location.href;
-            alert(url);
             var nom = document.getElementById('nom');
             var prenom = document.getElementById('prenom');
             var date = document.getElementById('date');
             var adresse = document.getElementById('adresse');
             var numeroSecurite = document.getElementById('numeroSecurite');
             if(url==="file:///C:/Users/diginamic04/Documents/bootstrap/nouveauColaborateur.html?errors"){
-              nom.setCustomValidity("Le nom est obligatoire");
-              prenom.setCustomValidity("Le prenom est obligatoire");
-              adresse.setCustomValidity("L'adresse est obligatoire");
-              date.setCustomValidity("La date est obligatoire");
-              numeroSecurite.setCustomValidity("Le numero de securité est obligatoire");
+              nom.setAttribute("class","is-invalid form-control");
+              prenom.setAttribute("class","is-invalid form-control");
+              adresse.setAttribute("class","is-invalid form-control");
+              date.setAttribute("class","is-invalid form-control");
+              numeroSecurite.setAttribute("class","is-invalid form-control");
           }
             else{alert("pas de pb"); }
         }
