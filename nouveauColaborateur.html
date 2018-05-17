@@ -1,0 +1,224 @@
+    <!doctype html>
+    <html>
+    	<head>
+    		<meta charset="UTF-8"/>
+    		<title>Index</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+       </head>
+
+
+
+
+    <body onload="formIsValid()">
+
+      <div class="container">
+        <div class="row">
+          <div class="col">
+        <header>
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Collaborateurs</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Statistiques</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Activités</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+      </header>
+        </div>
+      </div>
+
+          <div class="row">
+            <div class="col-8">
+              <h1>Nouveau collaborateur</h1>
+            </div>
+          </div>
+
+        <form>
+            <div class="row">
+
+                <div class="col-5">
+                  <label for="nom">Nom</label>
+                </div>
+                <div class="col-4">
+                  <input type="text" class="form-control" id="nom" placeholder="Nom" required>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-5">
+                  <label for="prenom">Prenom</label>
+                </div>
+                <div class="col-4">
+                  <input type="text" class="form-control" id="prenom" placeholder="Prenom" required>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-5">
+                  <label for="date">Date de Naissance</label>
+                </div>
+                <div class="col-4">
+                  <input type="date" class="form-control" id="date" placeholder="Date" required>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-5">
+                    <label for="adresse">Adresse</label>
+                  </div>
+                  <div class="col-4">
+                    <input type="text" class="form-control" id="adresse" placeholder="Adresse" required>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-5">
+                  <label for="numeroSecurite">Numero de sécurité sociale</label>
+                </div>
+                <div class="col-4">
+                  <input type="number" class="form-control" id="numeroSecurite" placeholder="NumerSecurite" required>
+              </div>
+            </div>
+
+          <div class="row justify-content-center">
+            <div class="col-8">
+          <button type="button" data-toggle="modal" data-target="#modal" onclick='ajouter()' class="btn btn-info btn log">Créer</button>
+        </div>
+          </div>
+        </form>
+</div>
+        <div id="modal" class="modal fade" role="dialogue">
+          <div class="modal-dialog">
+          <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Crétion d'un collaborateur</h4>
+      </div>
+      <div class="modal-body">
+        window.onload = creation()
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Créer</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+        <script>
+
+          function formIsValid(){
+
+            var url=document.location.href;
+            alert(url);
+            var nom = document.getElementById('nom');
+            var prenom = document.getElementById('prenom');
+            var date = document.getElementById('date');
+            var adresse = document.getElementById('adresse');
+            var numeroSecurite = document.getElementById('numeroSecurite');
+            if(url==="file:///C:/Users/diginamic04/Documents/bootstrap/nouveauColaborateur.html?errors"){
+              nom.setCustomValidity("Le nom est obligatoire");
+              prenom.setCustomValidity("Le prenom est obligatoire");
+              adresse.setCustomValidity("L'adresse est obligatoire");
+              date.setCustomValidity("La date est obligatoire");
+              numeroSecurite.setCustomValidity("Le numero de securité est obligatoire");
+          }
+            else{alert("pas de pb"); }
+        }
+
+
+        function verification(){
+          var nom = document.getElementById('nom');
+          nom.oninvalid = function(a) {
+    	       a.target.setCustomValidity("");
+    	        if (!a.target.validity.valid) {
+    		          if (a.target.value.length == 0) {
+                    a.target.setCustomValidity("Le nom est obligatoire");
+    		            } else {
+                      a.target.setCustomValidity("Veuillez entrer votre nom");
+    		              }
+    	               }
+                   };
+
+           var prenom = document.getElementById('prenom');
+           prenom.oninvalid = function(b) {
+              b.target.setCustomValidity("");
+                 if (!b.target.validity.valid) {
+                     if (b.target.value.length == 0) {
+                       b.target.setCustomValidity("Le prenom est obligatoire");
+                       } else {
+                         b.target.setCustomValidity("Veuillez entrer votre prenom");
+                         }
+                        }
+                      };
+
+              var date = document.getElementById('date');
+              date.oninvalid = function(c) {
+        	       c.target.setCustomValidity("");
+      	          if (!c.target.validity.valid) {
+                      if (c.target.value.length == 0) {
+                        c.target.setCustomValidity("La date est obligatoire");
+                        } else {
+                          c.target.setCustomValidity("Veuillez entrer une date");
+                            }
+                         }
+                       };
+
+               var adresse = document.getElementById('adresse');
+               adresse.oninvalid = function(d) {
+           	       d.target.setCustomValidity("");
+           	        if (!d.target.validity.valid) {
+             		          if (d.target.value.length == 0) {
+                             d.target.setCustomValidity("L'adresse est obligatoire");
+             		            } else {
+                             d.target.setCustomValidity("Veuillez entrer votre adresse");
+             		              }
+           	               }
+                        };
+
+                var numeroSecurite = document.getElementById('numeroSecurite');
+                numeroSecurite.oninvalid = function(e) {
+            	       e.target.setCustomValidity("");
+            	        if (!e.target.validity.valid) {
+          		          if (e.target.value.length == 0) {
+                        e.target.setCustomValidity("Le numero de sécuité est obligatoire");
+        		            } else {
+                          e.target.setCustomValidity("Veuillez entrer votre numero de securité");
+        		              }
+      	               }
+                     };
+                   }
+
+                    function creation(){
+                      var nom= document.getElementById('nom');
+                      var prenom=document.getElementById('prenom');
+                      var date=document.getElementById('date');
+                      var adresse=document.getElementById('adresse');
+                      var numeroSecu=document.getElementById('numeroSecurite');
+
+                        document.write("Vous etes sur le point de créer un nouveau collaborateur </br>"+
+                        "nom : "+nom+"</br>"+
+                        "prenom : " +prenom+"</br>"+
+                        "date de naissance : "+date+"</br>"+
+                        "adress : "+adresse+"</br>"+
+                        "numero de securité sociale : "+numeroSecu+"</br>")
+                      }
+
+        </script>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    	</body>
+
+    </html>
